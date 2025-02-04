@@ -47,10 +47,8 @@ passport.use(
       (u) => u.username === username && u.password === password
     );
     if (user) {
-      console.log("User found", user);
       done(null, user);
     } else {
-      console.log("User does not exist");
       done(null, false);
     }
   })
@@ -127,7 +125,6 @@ app.post(
 
     // save refresh token
     refreshTokens[req.user.username] = refreshToken;
-    console.log("Refresh Tokens", refreshTokens);
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
@@ -206,7 +203,6 @@ app.post("/logout", (req, res) => {
       }
     });
   }
-  console.log("Refresh Tokens in logout", refreshTokens);
   res.clearCookie("refreshToken", {
     httpOnly: true,
     secure: false,

@@ -102,7 +102,6 @@ const App = () => {
       });
 
       if (response.status === 403) {
-        console.log("response.message", response);
         throw new Error(response.message);
       }
       setPosts(response.posts);
